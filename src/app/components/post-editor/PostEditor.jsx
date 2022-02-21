@@ -15,9 +15,10 @@ function PostEditor() {
     { header, isHeader, isImage,  postBody, title } = useSelector((state) => state.form.value)
 
   const handleInputChange =  event => {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     dispatch(set({
       ...formData,
-      [event.target.name]: event.target.value
+      [event.target.name]: value
     }));
   }
 
@@ -35,13 +36,6 @@ function PostEditor() {
   const handleInputFileChange =  event => {
     event.preventDefault();
     imagePreview(event?.dataTransfer?.files[0]);
-  }
-
-  const handleInputCheckboxChange =  event => {
-    dispatch(set({
-      ...formData,
-      [event.target.name]: event.target.checked
-    }));
   }
 
   const handleSubmit = event => {
@@ -62,13 +56,13 @@ function PostEditor() {
             <textarea onChange={ handleInputChange } value={ postBody } name="postBody" className="form-control" id="textareaPostText" rows="3" placeholder="Some post text"></textarea>
           </div>
           
-          <CheckboxInput onChange={ handleInputCheckboxChange } isCheck={ isHeader } name="isHeader" id="headerSwitchCheck" text="Header">
+          <CheckboxInput onChange={ handleInputChange } isCheck={ isHeader } name="isHeader" id="headerSwitchCheck" text="Header">
             <div className="mb-3">
               <input onChange={ handleInputChange }  value={ header } name="header" type="text" className="form-control" id="textHeader" placeholder="Header"/>
             </div>
           </CheckboxInput>
           
-          <CheckboxInput onChange={ handleInputCheckboxChange } isCheck={ isImage } name="isImage" id="ImageSwitchCheck" text="Image">
+          <CheckboxInput onChange={ handleInputChange } isCheck={ isImage } name="isImage" id="ImageSwitchCheck" text="Image">
             <DragAndDropInput name="image" onChange={ handleInputFileChange } />
           </CheckboxInput>
 
