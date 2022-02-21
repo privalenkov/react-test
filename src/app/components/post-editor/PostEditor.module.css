@@ -1,0 +1,14 @@
+.postEditor {
+    background: #eef6fd;
+}
+
+.container {
+    padding: 2.5rem;
+}
+
+@media (min-width: 768px) {
+    .container {
+        position: fixed;
+        width: 50%;
+    }
+}

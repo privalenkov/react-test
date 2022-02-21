@@ -1,0 +1,15 @@
+#fileInput {
+    position: absolute;
+    width: 0;
+}
+
+.inputLabel {
+    cursor: pointer;
+    border: dashed 1px;
+    border-radius: 6px;
+    height: 90px;
+    background: #d3d3d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
